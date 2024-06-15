@@ -28,7 +28,7 @@ function invokeAction({ action, id, name, email, phone }) {
 
     case "add":
       // ... name email phone
-      contacts.addContact(name, email.phone);
+      contacts.addContact(name, email, phone);
       break;
 
     case "remove":

@@ -1,1 +1,1 @@
-https://github.com/VitaTro/goit-node-hw-01.git
+https://vitaliia-troian.imgbb.com/albums

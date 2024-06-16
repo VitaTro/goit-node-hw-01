@@ -17,19 +17,26 @@ const contactsPath = path.format({
 });
 
 // ...повертає всі контакти
-function listContacts() {
-  fs.readFile(contactsPath).then((contacts) =>
-    console.table(JSON.parse(contacts))
-  );
+async function listContacts() {
+  try {
+    const contacts = await fs.readFile(contactsPath);
+    console.table(JSON.parse(contacts));
+  } catch (error) {
+    console.error("Error reading contacts:", error);
+  }
 }
 
 // ...повертає об'єкт контакту з таким id.якщо не знайдено, то null
-function getContactById(contactID) {
-  fs.readFile(contactsPath)
-    .then((contacts) =>
-      JSON.parse(contacts).find((contact) => contact.id === contactID)
-    )
-    .then((contact) => console.table(contact));
+async function getContactById(contactID) {
+  try {
+    const contacts = await fs.readFile(contactsPath);
+    const contact = JSON.parse(contacts).find(
+      (contact) => contact.id === contactID
+    );
+    console.table(contact);
+  } catch (error) {
+    console.error("Error getting contact:", error);
+  }
 }
 
 //видаляє об'єкт за заданими параметрами
